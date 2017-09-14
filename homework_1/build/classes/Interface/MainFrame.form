@@ -53,7 +53,11 @@
                       <Component id="createBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="viewBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="456" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="spouseBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="viewSpouseBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="234" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -65,6 +69,8 @@
                           <Component id="titleLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="createBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="viewBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spouseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="viewSpouseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
@@ -94,6 +100,22 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="spouseBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="spouse"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spouseBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="viewSpouseBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="view spouse"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewSpouseBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

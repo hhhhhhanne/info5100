@@ -10,6 +10,7 @@ import Profile.CreditCard;
 import Profile.FinancialAccount;
 import Profile.License;
 import Profile.Person;
+import javax.swing.JFrame;
 
 /**
  *
@@ -26,8 +27,15 @@ public class MainFrame extends javax.swing.JFrame {
     private CreditCard creditCard;
     private FinancialAccount financialAccount;
     private Account account;
-    
+    JFrame spouseFrame = new JFrame();
+    JFrame viewSpouseFrame = new JFrame();
 
+    private Person spouse;
+    private Address saddress;
+    private License slicense;
+    private CreditCard screditCard;
+    private FinancialAccount sfinancialAccount;
+    private Account saccount;
     
     public MainFrame() {
         initComponents();
@@ -43,6 +51,19 @@ public class MainFrame extends javax.swing.JFrame {
         person.setFinancialAccount(financialAccount);
         person.financialAccount.setChecking(account);
         person.financialAccount.setSaving(account);
+        
+        spouse = new Person();
+        address = new Address();
+        spouse.setAddress(address);
+        license = new License();
+        spouse.setLicense(license);
+        creditCard = new CreditCard();
+        spouse.setCreditCard(creditCard);
+        account = new Account();
+        financialAccount = new FinancialAccount();
+        spouse.setFinancialAccount(financialAccount);
+        spouse.financialAccount.setChecking(account);
+        spouse.financialAccount.setSaving(account);
     }
 
     /**
@@ -59,6 +80,8 @@ public class MainFrame extends javax.swing.JFrame {
         titleLbl = new javax.swing.JLabel();
         createBtn = new javax.swing.JButton();
         viewBtn = new javax.swing.JButton();
+        spouseBtn = new javax.swing.JButton();
+        viewSpouseBtn = new javax.swing.JButton();
         displayPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,6 +106,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        spouseBtn.setText("spouse");
+        spouseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spouseBtnActionPerformed(evt);
+            }
+        });
+
+        viewSpouseBtn.setText("view spouse");
+        viewSpouseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSpouseBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -94,7 +131,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(createBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewBtn)
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spouseBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewSpouseBtn)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +144,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleLbl)
                     .addComponent(createBtn)
-                    .addComponent(viewBtn))
+                    .addComponent(viewBtn)
+                    .addComponent(spouseBtn)
+                    .addComponent(viewSpouseBtn))
                 .addGap(6, 6, 6))
         );
 
@@ -137,6 +180,32 @@ public class MainFrame extends javax.swing.JFrame {
         ViewPanel viewPanel = new ViewPanel(person,address,license,creditCard,financialAccount,account);
         splitPanel.setBottomComponent(viewPanel);
     }//GEN-LAST:event_viewBtnActionPerformed
+
+    private void spouseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spouseBtnActionPerformed
+        // TODO add your handling code here:
+        CreatePanel createPanel = new CreatePanel(spouse,saddress,slicense,screditCard,sfinancialAccount,saccount); 
+        splitPanel.setBottomComponent(createPanel);
+        if(spouseFrame.isVisible()){
+            spouseFrame.setVisible(true);
+            spouseFrame.setContentPane(createPanel);
+        }
+        else{
+            spouseFrame.setVisible(false);
+        }
+    }//GEN-LAST:event_spouseBtnActionPerformed
+
+    private void viewSpouseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSpouseBtnActionPerformed
+        // TODO add your handling code here:
+        ViewPanel viewPanel = new ViewPanel(spouse,saddress,slicense,screditCard,sfinancialAccount,saccount);
+        splitPanel.setBottomComponent(viewPanel);
+        if(viewSpouseFrame.isVisible()){
+            viewSpouseFrame.setVisible(true);
+            viewSpouseFrame.setContentPane(viewPanel);
+        }
+        else{
+            viewSpouseFrame.setVisible(false);
+        }
+    }//GEN-LAST:event_viewSpouseBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +247,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton createBtn;
     private javax.swing.JPanel displayPanel;
     private javax.swing.JSplitPane splitPanel;
+    private javax.swing.JButton spouseBtn;
     private javax.swing.JLabel titleLbl;
     private javax.swing.JButton viewBtn;
+    private javax.swing.JButton viewSpouseBtn;
     // End of variables declaration//GEN-END:variables
 }
