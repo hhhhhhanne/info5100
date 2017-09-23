@@ -258,6 +258,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             boolean availability = false;
             ap.setAvailability(availability);
         }
+
         ap.setAirport(airport);
         ap.setManufacturedYear(manufacturedYear);
         ap.setManufacturer(manufacturer);
@@ -266,7 +267,16 @@ public class CreateJPanel extends javax.swing.JPanel {
         ap.setSerialNumber(serialNumber);
         ap.setTakeOffTime(takeOffTime);
         ap.setUpdateTime(updateTime);
-        JOptionPane.showMessageDialog(null, "Airplane Added successfully");
+        if( (ap.getAirport() == null) || (ap.getSerialNumber() == 0) || (ap.getModelNumber() == 0) || (ap.getManufacturer() == null) || 
+                (ap.getManufacturedYear() == 0) || !(avaRadio.isSelected()||unaRadio.isSelected()) || !(yesRadio.isSelected()||noRadio.isSelected())
+                || ap.getTakeOffTime().equals(d1.format(new Date())) || ap.getUpdateTime().equals(d1.format(new Date())))
+        {
+            al.deteleAirplane(ap);
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Airplane Added successfully");
+        }
+        
         updTxt.setText("");
         takTxt.setText("");
         serNumTxt.setText("");
