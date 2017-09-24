@@ -91,6 +91,9 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("catalog updated time:");
 
+        updTxt.setEditable(false);
+        updTxt.setText("set automatically");
+
         btgava.add(avaRadio);
         avaRadio.setText("available");
 
@@ -227,7 +230,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         SimpleDateFormat d1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Utl utl = new Utl();
         Airplane ap = al.addAirplane();
-        Date updateTime = utl.getStringtoDate(updTxt.getText(), "update time date format should be yyyy-MM-dd HH:mm");
+        Date updateTime = new Date();
         Date takeOffTime = utl.getStringtoDate(takTxt.getText(), "take-off time date format should be yyyy-MM-dd HH:mm");
         int serialNumber = utl.getStringtoInt(serNumTxt.getText(),"(serial number)please input number");
         int modelNumber = utl.getStringtoInt(modNumTxt.getText(),"(model number)please input number");
@@ -269,7 +272,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         ap.setUpdateTime(updateTime);
         if( (ap.getAirport() == null) || (ap.getSerialNumber() == 0) || (ap.getModelNumber() == 0) || (ap.getManufacturer() == null) || 
                 (ap.getManufacturedYear() == 0) || !(avaRadio.isSelected()||unaRadio.isSelected()) || !(yesRadio.isSelected()||noRadio.isSelected())
-                || ap.getTakeOffTime().equals(d1.format(new Date())) || ap.getUpdateTime().equals(d1.format(new Date())))
+                || ap.getTakeOffTime().equals(d1.format(new Date())) )
         {
             al.deteleAirplane(ap);
         }else
@@ -325,7 +328,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                         }
                         else a.setCertificate(false);
                         a.setManufacturedYear(Integer.parseInt(csvFileList.get(row)[8]));
-                        a.setUpdateTime(utl.getStringtoDate(csvFileList.get(row)[9], ""));
+                        a.setUpdateTime(new Date());
                         al.addAirplane(a);
                     }
                 

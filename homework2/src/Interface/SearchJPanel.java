@@ -23,6 +23,7 @@ public class SearchJPanel extends javax.swing.JPanel {
      */
     private Airliner al;
     private Airliner temp;
+    JFrame secFrame = new JFrame();
     public SearchJPanel(Airliner al) {
         initComponents();
         this.al = al;
@@ -509,7 +510,8 @@ public class SearchJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-     /*   JFrame secFrame = new JFrame(); 
+        
+        /*SearchJPanel secsearchJPanel = new SearchJPanel(al);
         if(secFrame.isVisible()){
             secFrame.setVisible(true);
             secFrame.setContentPane(secsearchJPanel);

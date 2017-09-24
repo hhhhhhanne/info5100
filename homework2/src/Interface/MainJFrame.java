@@ -5,6 +5,7 @@
  */
 package Interface;
 import Airline.Airliner;
+import javax.swing.JFrame;
 /**
  *
  * @author zhaoxiaohan

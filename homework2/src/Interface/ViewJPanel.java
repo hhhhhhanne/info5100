@@ -114,6 +114,9 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("manufactured year:");
 
+        updTxt.setEditable(false);
+        updTxt.setText("set automatically");
+
         jLabel8.setText("take-off time:");
 
         jLabel9.setText("airport:");
@@ -347,7 +350,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         int selectedrow = tblAllAp.getSelectedRow();
         Airplane old = (Airplane)tblAllAp.getValueAt(selectedrow, 0);
         al.deteleAirplane(old);
-        Date updateTime = utl.getStringtoDate(updTxt.getText(), "update time date format should be yyyy-MM-dd HH:mm");
+        Date updateTime = new Date();
         Date takeOffTime = utl.getStringtoDate(takTxt.getText(), "take-off time date format should be yyyy-MM-dd HH:mm");
         int serialNumber = utl.getStringtoInt(serNumTxt.getText(),"(serial number)please input number");
         int modelNumber = utl.getStringtoInt(modNumTxt.getText(),"(model number)please input number");
@@ -388,7 +391,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         ap.setUpdateTime(updateTime);
         if( (ap.getAirport() == null) || (ap.getSerialNumber() == 0) || (ap.getModelNumber() == 0) || (ap.getManufacturer() == null) || 
                 (ap.getManufacturedYear() == 0) || !(avaRadio.isSelected()||unaRadio.isSelected()) || !(yesRadio.isSelected()||noRadio.isSelected())
-                || ap.getTakeOffTime().equals(d1.format(new Date())) || ap.getUpdateTime().equals(d1.format(new Date())))
+                || ap.getTakeOffTime().equals(d1.format(new Date())) )
         {
             al.deteleAirplane(ap);
         }else
