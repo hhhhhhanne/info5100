@@ -7,8 +7,8 @@ package Interface;
 
 import Airline.Airliner;
 import Airline.Airplane;
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -509,15 +509,14 @@ public class SearchJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        SearchJPanel secPanel = new SearchJPanel(al); 
-        splitPane.setBottomComponent(searchPanel);
+     /*   JFrame secFrame = new JFrame(); 
         if(secFrame.isVisible()){
             secFrame.setVisible(true);
-            secFrame.setContentPane(createPanel);
+            secFrame.setContentPane(secsearchJPanel);
         }
         else{
             secFrame.setVisible(false);
-        }
+        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
