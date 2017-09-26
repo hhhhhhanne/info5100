@@ -88,6 +88,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAllAp = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(696, 1000));
+
         jButton14.setText("update");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +286,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addComponent(updTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton14)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {avaRadio, jLabel1, jLabel10, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, manTxt, manYearTxt, modNumTxt, noRadio, portTxt, seatsTxt, serNumTxt, takTxt, unaRadio, updTxt, yesRadio});

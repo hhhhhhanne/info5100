@@ -7,9 +7,12 @@ package Interface;
 
 import Airline.Airliner;
 import Airline.Airplane;
+import java.awt.Dialog;
 import java.util.Arrays;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,10 +27,13 @@ public class SearchJPanel extends javax.swing.JPanel {
     private Airliner al;
     private Airliner temp;
     JFrame secFrame = new JFrame();
-    public SearchJPanel(Airliner al) {
+    boolean first;
+    public SearchJPanel(Airliner al, boolean first) {
         initComponents();
         this.al = al;
+        this.first = first;
         
+        jButton1.setVisible(first);
     }
     public void populateTable(){
         DefaultTableModel dtm = (DefaultTableModel)tblAllAp.getModel();
@@ -91,6 +97,8 @@ public class SearchJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAllAp = new javax.swing.JTable();
         ansLbl = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(659, 700));
 
         jLabel1.setText("manufactured year");
 
@@ -271,7 +279,7 @@ public class SearchJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(jButton1)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,15 +518,14 @@ public class SearchJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        JDialog jd = new JDialog((JFrame)SwingUtilities.getWindowAncestor(this), Dialog.ModalityType.APPLICATION_MODAL);
+        SearchJPanel secondSearch = new SearchJPanel(temp, false);
+        jd.add(secondSearch);
+        jd.pack();
+        jd.setLocationRelativeTo(this);
+        jd.setVisible(true);
         
-        /*SearchJPanel secsearchJPanel = new SearchJPanel(al);
-        if(secFrame.isVisible()){
-            secFrame.setVisible(true);
-            secFrame.setContentPane(secsearchJPanel);
-        }
-        else{
-            secFrame.setVisible(false);
-        }*/
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

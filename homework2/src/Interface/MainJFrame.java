@@ -39,6 +39,7 @@ public class MainJFrame extends javax.swing.JFrame {
         rightJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(853, 800));
 
         jButton1.setText("Create new airplane");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +86,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(43, 43, 43)
                 .addComponent(jButton3)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftJPanel);
@@ -98,7 +99,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         rightJPanelLayout.setVerticalGroup(
             rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGap(0, 796, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(rightJPanel);
@@ -122,7 +123,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SearchJPanel searchJPanel = new SearchJPanel(al);
+        boolean first = true;
+        SearchJPanel searchJPanel = new SearchJPanel(al, first);
         splitPane.setRightComponent(searchJPanel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
