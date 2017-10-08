@@ -1,0 +1,11 @@
+flightID,takeofftime,takeoffairport,arriveairport,serialNumber
+1,2017/10/31 06:00,Boston,Beijing,5660
+2,2017/10/31 06:01,NewYork,SanFrancisco,2354
+3,2017/11/2 06:01,NewYork,SanFrancisco,2354
+4,2017/11/1 06:00,Boston,Beijing,5660
+5,2017/10/28 06:05,NewYork,Seattle,4558
+6,2017/12/1 06:05,NewYork,Seattle,4558
+7,2017/12/2 06:05,NewYork,Seattle,4558
+8,2017/11/2 06:00,Boston,Beijing,5660
+9,2017/12/3 06:05,NewYork,Seattle,4558
+10,2017/12/5 06:05,NewYork,Seattle,4558
