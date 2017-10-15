@@ -10,6 +10,7 @@ import Business.HumanResources.PersonDirectory.Person;
 import Business.HumanResources.PersonDirectory.PersonDirectory;
 import Business.SystemAdministration.UserAccount;
 import Business.SystemAdministration.UserAccountDirectory;
+import Utils.HashUtil;
 import java.util.ArrayList;
 
 /**
@@ -43,7 +44,7 @@ public class ConfigureABusiness {
     UserAccount ua1 = uad.newUserAccount();
     ua1.setPerson(p); //link user account to the Mr. Wells 
     ua1.setUserName("aw");
-    ua1.setPwd("pw");
+    ua1.setPwd(HashUtil.hash("pw", "SHA1"));
     ua1.setRole("SystemAdmin");
     ua1.setStatus(true);
     accounts1.add(ua1);
@@ -53,7 +54,7 @@ public class ConfigureABusiness {
     UserAccount ua2 = uad.newUserAccount();
     ua2.setPerson(p2); 
     ua2.setUserName("jadam");
-    ua2.setPwd("pw");
+    ua2.setPwd(HashUtil.hash("pw", "SHA1"));
     ua2.setRole("SystemAdmin");
     ua2.setStatus(true);
     accounts2.add(ua2);
@@ -62,7 +63,7 @@ public class ConfigureABusiness {
     UserAccount ua3 = uad.newUserAccount();
     ua3.setPerson(p3); 
     ua3.setUserName("sbrown");
-    ua3.setPwd("pw");
+    ua3.setPwd(HashUtil.hash("pw", "SHA1"));
     ua3.setRole("hr");
     ua3.setStatus(true);
     accounts3.add(ua3);

@@ -5,6 +5,7 @@
  */
 package Business.SystemAdministration;
 
+import Utils.HashUtil;
 import java.util.ArrayList;
 
 /**
@@ -54,7 +55,7 @@ public class UserAccountDirectory {
         //Otherwise continue until no more to check
         //Return null if not found
         for(UserAccount ua : userAccountList){
-            if(ua.getUserName().equals(username)&&(ua.getPwd().equals(pwd))){
+            if(ua.getUserName().equals(username)&&(ua.getPwd().equals(HashUtil.hash(pwd, "SHA1")))){
                 return ua;
             }
         }

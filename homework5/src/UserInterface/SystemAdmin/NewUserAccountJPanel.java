@@ -8,6 +8,7 @@ package UserInterface.SystemAdmin;
 import Business.Business;
 import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.UserAccount;
+import Utils.HashUtil;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -159,7 +160,7 @@ public class NewUserAccountJPanel extends javax.swing.JPanel {
         Person person = (Person) cbPerson.getSelectedItem();
         ua.setPerson(person);
         ua.setUserName(userName);
-        ua.setPwd(pwd);
+        ua.setPwd(HashUtil.hash(pwd, "SHA1"));
         ua.setRole(String.valueOf(cbRole.getSelectedItem()));
         ua.setStatus(true);
         person.addAccount(ua);
