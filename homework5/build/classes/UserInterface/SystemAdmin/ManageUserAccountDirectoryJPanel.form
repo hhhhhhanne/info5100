@@ -31,6 +31,7 @@
                           <Component id="btnFind" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnNew" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnBack" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnDe" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -54,9 +55,11 @@
                       <Component id="btnNew" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnDe" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="162" max="32767" attributes="0"/>
+              <EmptySpace pref="149" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -145,6 +148,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDe">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Detele User Account&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

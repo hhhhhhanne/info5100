@@ -6,6 +6,7 @@
 package UserInterface.SystemAdmin;
 
 import Business.Business;
+import Business.HumanResources.PersonDirectory.Person;
 import Business.SystemAdministration.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -63,6 +64,7 @@ public class ManageUserAccountDirectoryJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        btnDe = new javax.swing.JButton();
 
         jLabel1.setText("User Accounts");
 
@@ -122,6 +124,13 @@ public class ManageUserAccountDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDe.setText("Detele User Account>");
+        btnDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,7 +148,8 @@ public class ManageUserAccountDirectoryJPanel extends javax.swing.JPanel {
                             .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,8 +167,10 @@ public class ManageUserAccountDirectoryJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNew)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdate)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                        .addComponent(btnUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDe)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -199,9 +211,23 @@ public class ManageUserAccountDirectoryJPanel extends javax.swing.JPanel {
         layout.next(processContainer);
     }//GEN-LAST:event_btnFindActionPerformed
 
+    private void btnDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeActionPerformed
+        // TODO add your handling code here:
+        int row = tbUA.getSelectedRow();
+        if(row<0) {
+             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        UserAccount ua = (UserAccount) tbUA.getValueAt(row, 0);
+        business.getUserAccountsDirectory().removeUserAccount(ua);
+        business.getPersonDirectory().findPersonByLastName(ua.getPerson().getLastName()).getAccounts().remove(ua);
+        populateTable();
+    }//GEN-LAST:event_btnDeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDe;
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnUpdate;
