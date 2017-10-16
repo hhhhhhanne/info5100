@@ -148,6 +148,14 @@ public class NewUserAccountJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String userName = txtUserName.getText();
         String pwd = String.valueOf(txtPwd.getPassword());
+        for(UserAccount u: business.getUserAccountsDirectory().getUserAccountList())
+        {
+            if(u.getUserName().equals(userName))
+            {
+                JOptionPane.showMessageDialog(null, "this user name has been used");
+                return;
+            }
+        }
         if(userName.isEmpty() == true){
             JOptionPane.showMessageDialog(null, "please enter user name");
             return;

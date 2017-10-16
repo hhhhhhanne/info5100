@@ -114,6 +114,13 @@ public class NewPersonJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String lastName = txtLastName.getText();
         String firstName = txtFirstName.getText();
+        for(Person p:business.getPersonDirectory().getPersonlist()){
+            if(p.getFirstName().equals(firstName)&&p.getLastName().equals(lastName))
+            {
+                JOptionPane.showMessageDialog(null, "this person have been created");
+                return;
+            }
+        }
         if(lastName.isEmpty()||firstName.isEmpty())
         {
             JOptionPane.showMessageDialog(null,"please enter your name");
