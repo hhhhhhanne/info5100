@@ -15,6 +15,7 @@ import Business.WorkQueue.OrderProcessRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -162,6 +163,8 @@ public class InventoryWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Vaccine");
 
+        txtQuan.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
         jLabel3.setText("Quantity");
 
         btnAdd.setText("Add");
@@ -237,8 +240,19 @@ public class InventoryWorkAreaJPanel extends javax.swing.JPanel {
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
-        int oldNum = inventoryOrganization.searchInventory(request.getVaccine()).getNum();
-        inventoryOrganization.searchInventory(request.getVaccine()).setNum(oldNum-request.getQuantity());
+        if(inventoryOrganization.searchInventory(request.getVaccine())==null){
+            JOptionPane.showMessageDialog(null, "there are no such vaccine");
+            return;
+        }
+        else{
+            int oldNum = inventoryOrganization.searchInventory(request.getVaccine()).getNum();
+            if(oldNum-request.getQuantity()<0){
+                JOptionPane.showMessageDialog(null, "lack stock");
+            }else{
+                inventoryOrganization.searchInventory(request.getVaccine()).setNum(oldNum-request.getQuantity());
+            }
+        }
+
         populateTable();
         populateInventory();
 
@@ -275,13 +289,15 @@ public class InventoryWorkAreaJPanel extends javax.swing.JPanel {
         in.setVaccine(vac);
         in.setNum(Integer.parseInt(txtQuan.getText()));
         int addNum = in.getNum();
-        int oldNum = inventoryOrganization.searchInventory(vac).getNum();
-        if(inventoryOrganization.searchInventory(vac)==null){
+        if(inventoryOrganization.searchInventory(vac) == null){
+            int oldNum = 0;
             inventoryOrganization.addInventory(in);
-        }
-        else{
+            
+        }else{
+            int oldNum = inventoryOrganization.searchInventory(vac).getNum();
             inventoryOrganization.searchInventory(vac).setNum(addNum+oldNum);
         }
+
         populateInventory();
         txtQuan.setText("");
     }//GEN-LAST:event_btnAddActionPerformed

@@ -42,8 +42,9 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Vaccine vaccine : system.getVaccineCatalog()) {
-            Object[] row = new Object[1];
+            Object[] row = new Object[2];
             row[0] = vaccine;
+            row[1] = vaccine.getDiseaseName();
             model.addRow(row);
         }
     }
