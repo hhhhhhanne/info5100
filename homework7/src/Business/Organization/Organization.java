@@ -25,8 +25,9 @@ public abstract class Organization {
     private String workArea;
     
     
+    
     public enum Type{
-        Admin("Admin Organization"), Clinic("Clinic Organization"), Inventory("Inventory Organization");
+        Admin("Admin Organization"), Clinic("Clinic Organization"), Inventory("Inventory Organization"), SubProvider("SubProvider Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -87,6 +88,8 @@ public abstract class Organization {
     public void setWorkArea(String workArea) {
         this.workArea = workArea;
     }
+
+
 
 
     @Override

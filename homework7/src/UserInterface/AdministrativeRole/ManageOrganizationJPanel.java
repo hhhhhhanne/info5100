@@ -41,12 +41,12 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         if((EnterpriseType.Provider.getValue()).equals(enterprise.getEnterpriseType().getValue()))
         {
             for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.Admin.getValue()))
+            if ((!type.getValue().equals(Type.Admin.getValue()))&&(!type.getValue().equals(Type.Clinic.getValue())))
                 organizationJComboBox.addItem(type);
             }
         }else{
             for (Type type : Organization.Type.values()){
-            if ((!type.getValue().equals(Type.Admin.getValue()))&&(!type.getValue().equals(Type.Clinic.getValue())))
+            if ((!type.getValue().equals(Type.Admin.getValue()))&&(!type.getValue().equals(Type.Clinic.getValue()))&&(!type.getValue().equals(Type.SubProvider.getValue())))
                 organizationJComboBox.addItem(type);
             }
         }

@@ -34,6 +34,11 @@ public class OrganizationDirectory {
             organization.setWorkArea(workarea);
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Organization.Type.SubProvider.getValue())) {
+            organization = new SubProviderOrganization();
+            organization.setWorkArea(workarea);
+            organizationList.add(organization);
+        }
         return organization;
     }
 }

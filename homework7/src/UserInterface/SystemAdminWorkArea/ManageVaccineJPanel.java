@@ -169,7 +169,7 @@ public class ManageVaccineJPanel extends javax.swing.JPanel {
         String vacDis = disComboBox.getSelectedItem().toString();
         Vaccine vc = new Vaccine();
         vc.setVaccineName(vacName);
-        vc.setDiseaseName(vacName);
+        vc.setDiseaseName(vacDis);
         if(system.getVaccineCatalog().contains(vc)){
             JOptionPane.showMessageDialog(null, "this vaccine has added");
             return;

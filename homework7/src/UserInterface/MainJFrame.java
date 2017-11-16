@@ -9,7 +9,9 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.ClinicOrganization;
 import Business.Organization.Organization;
+import Business.Organization.SubProviderOrganization;
 import Business.State.State;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -144,11 +146,37 @@ public class MainJFrame extends javax.swing.JFrame {
                         //Step3: Check against each organization inside that enterprise
                         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                             userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
-                            if (userAccount != null) {
+                            if(userAccount == null){
+                                    //SubProviderOrganization organization1 = (SubProviderOrganization)organization;
+                            	if(organization instanceof SubProviderOrganization&&((SubProviderOrganization) organization).getClinicOrgList()!=null){
+                            		
+                            		for(ClinicOrganization clinic:((SubProviderOrganization) organization).getClinicOrgList()){
+                            			userAccount=clinic.getUserAccountDirectory().authenticateUser(userName, password);
+                            			if (userAccount != null) {
+                                            inEnterprise = enterprise;
+                                            inOrganization = organization;
+                                            break;
+                                            }
+                            		}
+                            	}else{
+                            		userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                                    if (userAccount != null) {
+                                    inEnterprise = enterprise;
+                                    inOrganization = organization;
+                                    break;
+                                    }
+                            	}
+                            	if (userAccount != null) {
+                            		break;
+                            	}
+                                    
+                                
+                            }else{
                                 inEnterprise = enterprise;
                                 inOrganization = organization;
                                 break;
                             }
+                            
                         }
                     } else {
                         inEnterprise = enterprise;

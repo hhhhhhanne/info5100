@@ -280,8 +280,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
-
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        String workarea = stateComboBox.getSelectedItem().toString();
+        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name,workarea);
 
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
         populateTable();
